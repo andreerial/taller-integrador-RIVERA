@@ -12,52 +12,48 @@
         <p>Ingrese las tres notas del corte para calcular el promedio.</p>
 
         <label>Nota 1:</label>
-        <input type="number" id="n1" step="0.1">
+        <input type="number" id="nota-1" step="0.1">
 
         <label>Nota 2:</label>
-        <input type="number" id="n2" step="0.1">
+        <input type="number" id="nota-2" step="0.1">
 
         <label>Nota 3:</label>
-        <input type="number" id="n3" step="0.1">
+        <input type="number" id="nota-3" step="0.1">
 
-        <button onclick="calc()">Calcular</button>
+        <button id="boton-calcular" onclick="calcularPromedio()">Calcular</button>
 
-        <p id="r"></p>
-        <p id="r2"></p>
+        <p id="texto-promedio"></p>
+        <p id="estado-aprovacion"></p>
     </div>
 
 <script>
 
-let TempValue2 = 0;
-let x = 3;
+let  promedioFinal = 0;
+let CANTIDAD_NOTAS = 3;
 
-function calc() {
+function calcularPromedio() {
 
-    let a = parseFloat(document.getElementById("n1").value);
-    let b = parseFloat(document.getElementById("n2").value);
-    let c = parseFloat(document.getElementById("n3").value);
+    let nota_1 = parseFloat(document.getElementById("nota-1").value);
+    let nota_2 = parseFloat(document.getElementById("nota-2").value);
+    let nota_3 = parseFloat(document.getElementById("nota-3").value);
 
-    console.log("valores capturados:", a, b, c);
 
-    if (isNaN(a) || isNaN(b) || isNaN(c)) {
-        document.getElementById("r").innerHTML = "Debe ingresar las tres notas.";
+    if (isNaN(nota_1) || isNaN(nota_2) || isNaN(nota_3)) {
+        document.getElementById("texto-promedio").innerHTML = "Debe ingresar las tres notas.";
         return;
     }
 
-    TempValue2 = (a + b + c) / x;
+    promedioFinal = (nota_1 + nota_2 + nota_3) / CANTIDAD_NOTAS;
 
-    document.getElementById("r").innerHTML = "Promedio: " + TempValue2.toFixed(2);
+    document.getElementById("texto-promedio").innerHTML = "Promedio: " + promedioFinal.toFixed(2);
 
-    if (TempValue2 >= 3.0) {
-        document.getElementById("r2").innerHTML = "Resultado: aprobado";
+    if (promedioFinal >= 3.0) {
+        document.getElementById("estado-aprovacion").innerHTML = "Resultado: aprobado";
     } else {
-        document.getElementById("r2").innerHTML = "Resultado: reprobado";
+        document.getElementById("estado-aprovacion").innerHTML = "Resultado: reprobado";
     }
 
-    console.log("promedio calculado");
 }
-
-console.log("pagina cargada");
 
 </script>
 
